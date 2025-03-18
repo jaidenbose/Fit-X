@@ -1,0 +1,66 @@
+{% extends 'User/Head.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .pcoded-inner-content{
+        background-image: url(../../../Guest/static/main/images/pexels-photo-7843960.webp);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size:cover;
+        
+    }
+    .clrfrm{
+        background-color:rgb(216, 235, 211);
+        opacity:95%;
+    }
+    </style>
+    <div class="pcoded-inner-content">
+    <br><br><br>
+<body>
+    <br><br><br><br><br><br><br><br><br><br>
+    {% csrf_token %}
+    <table border="1" align="center" cellpadding="10" class="clrfrm">
+        <tr>
+            <th>SL.No</th>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Image</th>
+            <th>Quantity</th>
+            <th>Status</th>
+        </tr>
+        {% for i in Prdt %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.product.product_name}}</td>
+                <td>{{i.product.product_rate}}</td>
+                <td><img src="{{i.product.product_image.url}}" alt="img" width="120px" height="120px"></td>
+                <td>{{i.booking_quantity}}</td>
+                {% if i.booking.booking_status == 6 %}
+                <td>Order Delivered</td>
+                {% elif  i.booking.booking_status == 5 %}
+                <td>Packed and Deliveryboy on the Way</td>
+                {% elif  i.booking.booking_status == 4 %}
+                <td>Rejected Due to Some Technical Issues Refunded in 7 Working Days</td>
+                {% elif  i.booking.booking_status == 3 %}
+                <td>We are Accepted Your Order  and packing and Shipping Within Few Days </td>
+                {% else %}
+                <td><a href="{% url 'webuser:cancelbooking' i.booking_id %}">CANCEL ORDER</a></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+    </table>
+</body>
+<br><br><br>
+</div>
+</html>
+
+<br><br><br><br><br><br>
+{% endblock content %}

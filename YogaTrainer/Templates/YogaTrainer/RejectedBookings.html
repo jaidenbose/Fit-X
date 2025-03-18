@@ -1,0 +1,45 @@
+{% extends 'YogaTrainer/Head.html' %}
+{% load static %}
+{% block content %}
+<html>
+<head>
+    <title>My Booking</title>
+</head>
+<body>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <center><h2><b>REJECTED BOOKINGS</b></h2></center>
+    <br><br>
+    <div id="tab" align="center">
+    <form action="" method="post">
+        {% csrf_token %}
+        <table border="11">
+            <tr>
+                <td><h1>Serial Number</h1></td>
+                <td><h1>User Name</h1></td>
+                <td><h1>User Contact</h1></td>
+                <td><h1>Package Name</h1></td>
+                <td><h1>Package Details</h1></td>
+                <td><h1>Package Duration</h1></td>
+                <td><h1>Package Fees</h1></td>
+            </tr>
+            {% for i in BKP  %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{i.user.user_name}}</td>
+                <td>{{i.user.user_contact}}</td>
+                <td>{{i.package.package_name}}</td>
+                <td width="300">{{i.package.package_details}}</td>
+                <td>{{i.package.package_duration}}</td>
+                <td>{{i.package.package_fees}}</td>
+                <td><a href="{% url 'webyoga:accept_booking' i.id %}">Accept</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+</div>
+</body>
+</html>
+
+
+<br><br><br><br><br><br>
+{% endblock content %}

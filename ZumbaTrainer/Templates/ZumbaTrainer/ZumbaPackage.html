@@ -1,0 +1,74 @@
+{% extends 'ZumbaTrainer/Head.html' %}
+{% load static %}
+{% block content %}
+<html>
+<head>
+    <title>Zumba Trainer Package</title>
+</head>
+<body>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <center><h2><b>ZUMBA PACKAGE</b></h2></center>
+    <br><br>
+    <div id="tab" align="center">
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            <tr>
+                <td><h1>Name</h1></td>
+                <td><input type="text" name="txt_name" id=""></td>
+            </tr>
+            <tr>
+                <td><h1>Details</h1></td>
+                <td><input type="text" name="txt_details" id=""></td>
+            </tr>
+            <tr>
+                <td><h1>Duration</h1></td>
+                <td><input type="text" name="txt_duration" id=""></td>
+            </tr>
+            <tr>
+                <td><h1>Fees</h1></td>
+                <td><input type="text" name="txt_fees" id=""></td>
+            </tr>
+            <tr>
+                <td><h1>Photo</h1></td>
+                <td><input type="file" name="txt_photo" id=""></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><h2>
+                    <input type="submit" name="txt_submit" value="Submit">
+                    <input type="reset" name="txt_reset" id="Reset"></h2>
+                </td>
+            </tr>
+        </table>
+        <br><br><br>
+        <table align="center" border="1">
+            <tr>
+                <th><h2>SI NO</h2></th>
+                <th><h2>Name</h2></th>
+                <th><h2>Details</h2></th>
+                <th><h2>Duration</h2></th>
+                <th><h2>Fees</h2></th>
+                <th><h2>Photo</h2></th>
+                <th><h2>Delete</h2></th>
+            </tr>
+            {% for i in PA %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{i.package_name}}</td>
+                <td width="300">{{i.package_details}}</td>
+                <td>{{i.package_duration}}</td>
+                <td>{{i.package_fees}}</td>
+                <td><img src="{{i.package_photo.url}}" alt="img" width="120px" height="120px"></td>
+                <td><a href="{% url 'webzumba:add_course' i.id %}">Add Course</a> ||
+                    <a href="{% url 'webzumba:del_package' i.id %}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+</div>
+</body>
+</html>
+
+
+<br><br><br><br><br><br>
+{% endblock content %}

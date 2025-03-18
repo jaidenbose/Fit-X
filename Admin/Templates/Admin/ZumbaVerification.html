@@ -1,0 +1,54 @@
+{% extends 'Admin/Head.html' %}
+{% load static %}
+{% block content %}
+<html>
+<head>
+    <title>Zumba Trainer Verification</title>
+</head>
+<body>
+    <br><br><br><br><br><br>
+    <center><h2><b>ZUMBA VERIFICATION</b></h2></center>
+    <br><br>
+    <div id="tab" align="center">
+    <form action="" method="post">
+    <form action="" method="post">
+        {% csrf_token %}
+        <table border="1">
+            <tr>
+                <td><h6>SI No</h6></td>
+                <td><h6>Trainer Name</h6></td>
+                <td><h6>Contact</h6></td>
+                <td><h6>Email</h6></td>
+                <td><h6>Address</h6></td>
+                <td><h6>Photo</h6></td>
+                <td><h6>Qualification</h6></td>
+                <td><h6>Certificate</h6></td>
+                <td><h6>District</h6></td>
+                <td><h6>Place</h6></td>
+                <td><h6>Action</h6></td>
+            </tr>
+            {% for i in ZV %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{i.zumba_name}}</td>
+                <td>{{i.zumba_contact}}</td>
+                <td>{{i.zumba_email}}</td>
+                <td>{{i.zumba_address}}</td>
+                <td><img src="{{i.zumba_photo.url}}" alt="photo" width="120px" height="120px"></td>
+                <td>{{i.zumba_qualification}}</td>
+                <td><img src="{{i.zumba_certificate.url}}" alt="certificate" width="120px" height="120px"></td>
+                <td>{{i.place_id.district}}</td>
+                <td>{{i.place_id}}</td>
+                <td colspan="2">
+                    <a href="{% url 'webadmin:accept_zumba' i.id %}">Accept</a> //
+                    <a href="{% url 'webadmin:reject_zumba' i.id %}">Reject</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+</div>
+</body>
+</html>
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock content %}

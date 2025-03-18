@@ -1,0 +1,146 @@
+{% extends 'User/Head.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <center><h2><b>SEARCH TRAINER</b></h2></center>
+    <br><br>
+    
+    <form action="" method="post">
+        {% csrf_token %}
+        <table align="center" cellpadding="15">
+            <tr>
+                <td><input type="checkbox" name="trainers" value="Fitness_Trainer"><h2>Fitness</h2>
+                    <input type="checkbox" name="trainers" value="Yoga_Trainer"><h2>Yoga</h2>
+                    <input type="checkbox" name="trainers" value="Zumba_Trainer"><h2>Zumba</h2>
+                </td>
+                <td><input type="submit" name="search" value="Search" style="width: 100%;"></td>
+            </tr>
+        </table>
+
+        <div id="data">
+            <table align="center" cellpadding="50" style="border-collapse: collapse">
+                <tr>
+                    {% for i in FT %}
+
+                    <td>
+                        <div style="text-align:center;border:1px solid rgba(5, 0, 0, 0.952);margin:22px;padding:20px;width: 200px;">
+
+                            <p><img src="{{i.fitness_photo.url}}" width="100px" height="100px" /></p>
+
+                            <p>{{i.fitness_name}}</p>
+
+                            <p>{{i.fitness_contact}}</p>
+
+                            <p>{{i.fitness_email}}</p>
+
+                            <p>{{i.fitness_address}}</p>
+
+                            <p>{{i.fitness_qualification}}</p>
+
+                            <p>{{i.trainertype.ttype_name}}</p>
+
+                            <p><a href="{% url 'webuser:FitnessPackage' i.id %}" style="color:brown;">View Package</a></p>
+                                
+                        </div>
+                    </td>
+                    {% if forloop.counter|divisibleby:4 %}
+                </tr>
+                <tr>
+                    {% endif %}
+
+
+                    {% endfor %}
+            </table>
+
+        </div>
+        
+        <div id="data">
+            <table align="center" cellpadding="50" style="border-collapse: collapse">
+                <tr>
+                    {% for i in YG %}
+
+                    <td>
+                        <div style="text-align:center;border:1px solid rgba(5, 0, 0, 0.952);margin:22px;padding:20px;width: 200px;">
+
+                            <p><img src="{{i.yoga_photo.url}}" width="100px" height="100px" /></p>
+
+                            <p>{{i.yoga_name}}</p>
+
+                            <p>{{i.yoga_contact}}</p>
+
+                            <p>{{i.yoga_email}}</p>
+
+                            <p>{{i.yoga_address}}</p>
+
+                            <p>{{i.yoga_qualification}}</p>
+
+                            <p>{{i.trainertype.ttype_name}}</p>
+
+                            <p><a href="{% url 'webuser:YogaPackage' i.id %}" style="color:brown;">View Package</a></p>
+
+                        </div>
+                    </td>
+                    {% if forloop.counter|divisibleby:4 %}
+                </tr>
+                <tr>
+                    {% endif %}
+
+
+                    {% endfor %}
+            </table>
+        </div>
+        
+
+        <div id="data">
+            <table align="center" cellpadding="50" style="border-collapse: collapse">
+                <tr>
+                    {% for i in ZB %}
+
+                    <td>
+                        <div style="text-align:center;border:1px solid rgba(5, 0, 0, 0.952);margin:22px;padding:20px;width: 200px;">
+
+                            <p><img src="{{i.zumba_photo.url}}" width="100px" height="100px" /></p>
+
+                            <p>{{i.zumba_name}}</p>
+
+                            <p>{{i.zumba_contact}}</p>
+
+                            <p>{{i.zumba_email}}</p>
+
+                            <p>{{i.zumba_address}}</p>
+
+                            <p>{{i.zumba_qualification}}</p>
+
+                            <p>{{i.trainertype.ttype_name}}</p>
+
+                            <p><a href="{% url 'webuser:ZumbaPackage' i.id %}" style="color:brown;">View Package</a></p>
+
+                        </div>
+                    </td>
+                    {% if forloop.counter|divisibleby:4 %}
+                </tr>
+                <tr>
+                    {% endif %}
+
+
+                    {% endfor %}
+            </table>
+
+        </div>
+    </form>
+</div>
+</body>
+</html>
+
+<br><br><br><br><br><br>
+{% endblock content %}
+

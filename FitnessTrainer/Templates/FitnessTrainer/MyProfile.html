@@ -1,0 +1,54 @@
+{% extends 'FitnessTrainer/Head.html' %}
+{% load static %}
+{% block content %}
+<html>
+<head>
+    <title>My Profile</title>
+</head>
+<body>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <center><h2><b>MY PROFILE</b></h2></center>
+    <br><br>
+    <div id="tab" align="center">
+    <form action="" mathode="post">
+        <table border="2" align="center">
+            <tr>
+                <td colspan="2" align="center"><img src="{{FIT.fitness_photo.url}}" alt="img" width="120PX" height="120X" style="border-radius: 60px;"></td>
+            </tr>
+            <tr>
+                <td><H1>Name</H1></td>
+                <td>{{FIT.fitness_name}}</td>
+            </tr>
+            <tr>
+                <td><H1>Contact</H1></td>
+                <td>{{FIT.fitness_contact}}</td>
+            </tr>
+            <tr>
+                <td><h1>Email</h1></td>
+                <td>{{FIT.fitness_email}}</td>
+            </tr>
+            <tr>
+                <td><h1>Address</h1></td>
+                <td>{{FIT.fitness_address}}</td>
+            </tr>
+            
+            <tr>
+                <td><h1>District</h1></td>
+                <td>{{FIT.place_id.district}}</td>
+            </tr>
+            <tr>
+                <td><h1>Place</h1></td>
+                <td>{{FIT.place_id}}</td>
+            </tr>
+            <tr>
+                <td><h1>Certification</h1></td>
+                <td><img src="{{FIT.fitness_certificate.url}}" alt="img" width="120PX" height="120X"></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
+
+<br><br><br><br><br><br>
+{% endblock content %}

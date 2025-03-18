@@ -1,0 +1,55 @@
+{% extends 'User/Head.html' %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <center><h2><b>YOGA PACKAGE</b></h2></center>
+    <br><br>
+    <div id="tab" align="center">
+    <div id="data">
+        <table align="center" cellpadding="50" style="border-collapse: collapse">
+            <tr>
+                {% for i in PK %}
+
+                <td>
+                    <div style="text-align:center;border:1px solid rgba(5, 0, 0, 0.952);margin:22px;padding:20px;width: 200px;">
+
+                        <p><img src="{{i.package_photo.url}}" width="100px" height="100px" /></p>
+
+                        <p>{{i.package_name}}</p>
+
+                        <p>{{i.package_details}}</p>
+
+                        <p>{{i.package_duration}}</p>
+
+                        <p>{{i.package_fees}}</p>
+
+                        <p>{{i.yogatrainer_id.yoga_name}}</p>
+
+                        <p><a href="{% url 'webuser:bookypackage' i.id %}">Book Now</a></p>
+                        
+                    </div>
+                </td>
+                {% if forloop.counter|divisibleby:4 %}
+            </tr>
+            <tr>
+                {% endif %}
+
+
+                {% endfor %}
+        </table>
+    </div>
+    </div>
+</body>
+</html>
+
+<br><br><br><br><br><br>
+{% endblock content %}

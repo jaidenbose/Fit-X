@@ -1,0 +1,68 @@
+{% extends 'User/Head.html' %}
+{% load static %}
+{% block content %}
+<html>
+<head>
+    <title>My Profile</title>
+</head>
+<body>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <center><h2><b>MY BOOKING</b></h2></center>
+    <br><br>
+    <div id="tab" align="center">
+    <form action="" method="post">
+        {% csrf_token %}
+        <table border="11" align="center">
+            <tr>
+                <td><h1>Name</h1></td>
+                <td>{{USR.user_name}}</td>
+            </tr>
+            <tr>
+                <td><h1>Contact</h1></td>
+                <td>{{USR.user_contact}}</td>
+            </tr>
+            <tr>
+                <td><h1>Email</h1></td>
+                <td>{{USR.user_email}}</td>
+            </tr>
+            <tr>
+                <td><h1>Address</h1></td>
+                <td>{{USR.user_address}}</td>
+            </tr>
+            <tr>
+                <td><h1>Gender</h1></td>
+                <td>{{USR.user_gender}}</td>
+            </tr>
+            <tr>
+                <td><h1>Age</h1></td>
+                <td>{{USR.user_age}}</td>
+            </tr>
+            <tr>
+                <td><h1>Photo</h1></td>
+                <td>{{USR.user_photo}}</td>
+            </tr>
+            <tr>
+                <td><h1>District</h1></td>
+                <td>{{USR.place_id.district}}</td>
+            </tr>
+            <tr>
+                <td><h1>Place</h1></td>
+                <td>{{USR.place_id}}</td>
+            </tr>
+            <tr>
+                <td><h1>Proof</h1></td>
+                <td>{{USR.user_proof}}</td>
+            </tr>
+            <tr>
+                <td><h1>Password</h1></td>
+                <td>{{USR.user_password}}</td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
+
+
+<br><br><br><br><br><br>
+{% endblock content %}

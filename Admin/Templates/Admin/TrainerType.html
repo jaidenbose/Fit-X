@@ -1,0 +1,49 @@
+{% extends 'Admin/Head.html' %}
+{% load static %}
+{% block content %}
+<html>
+<head>
+    <title>Trainer Type</title>
+</head>
+<body>
+    <br><br><br><br><br><br>
+    <center><h2><b>TRAINER TYPE</b></h2></center>
+    <br><br>
+    <div id="tab" align="center">
+    <form action="" method="post">
+        {% csrf_token %}
+        <table border="11" align="center">
+            <tr>
+                <td><H1>Trainer Type</H1></td>
+                <td><input type="text" name="txt_ttype" id=""></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><h2>
+                    <input type="submit" name="txt_submit" value="Submit">
+                    <input type="reset" name="txt_cancel" value="Cancel"></h2>
+                </td>
+            </tr>
+        </table>
+        <br><br>
+        <table border="10" align="center">
+            <tr>
+                <td><h2>SI NO</h2></td>
+                <td><h2>Trainer Type</h2></td>
+                <td><h2>Action</h2></td>
+            </tr>
+            {% for i in TT %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{i.ttype_name}}</td>
+                <td><a href="{% url 'webadmin:Del_Ttype' i.id %}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+</div>
+</body>
+</html>
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock content %}

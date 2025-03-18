@@ -1,0 +1,32 @@
+{% extends 'Admin/Head.html' %}
+{% load static %}
+{% block content %}
+<html>
+<head>
+    <title>Stock</title>
+</head>
+<body>
+    <br><br><br><br><br><br>
+    <center><h2><b>STOCK</b></h2></center>
+    <br><br>
+    <div id="tab" align="center">
+    <form action="" method="post">
+        {% csrf_token %}
+        <table border="11" align="center">
+            <tr>
+                <td><h1>Quantity</h1></td>
+                <td><input type="text" name="txt_squantity" id=""></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><h2>
+                <input type="submit" name="btn_save" value="Save">
+                <input type="reset" name="btn_cancel" value="Cancel"></td></h2>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
+
+
+{% endblock content %}

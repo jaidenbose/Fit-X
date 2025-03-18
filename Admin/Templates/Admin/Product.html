@@ -1,0 +1,65 @@
+{% extends 'Admin/Head.html' %}
+{% load static %}
+{% block content %}
+<html>
+<head>
+    <title>Product Name</title>
+</head>
+<body>
+    <br><br><br><br><br><br>
+    <center><h2><b>PRODUCT</b></h2></center>
+    <br><br>
+    <div id="tab" align="center">
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table border="2" align="center">
+            <tr>
+                <td><h2>Name</h2></td>
+                <td><input type="text" name="txt_pname" id=""></td>
+            </tr>
+            <tr>
+                <td><h2>Image</h2></td>
+                <td><input type="file" name="FilePhoto" id=""></td>
+            </tr>
+            <tr>
+                <td><h2>details</h2></td>
+                <td><textarea name="txt_pdetails" id="" cols="30" rows="10"></textarea></td>
+            </tr>
+            <tr>
+                <td><h2>Rate</h2></td>
+                <td><input type="text" name="txt_prate" id=""></td>
+            </tr>
+            <tr>
+                <td><h2>Brand</h2></td>
+                <td><input type="text" name="txt_pbrand" id=""></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><h3>
+                    <input type="submit" name="btn_save" value="Save" >
+                    <input type="reset" name="btn_cancel" value="Cancel"></h3>
+                </td>
+            </tr>
+        </table>
+        <br><br><br>
+        <table border="10" align="center">
+        <tr>
+            <td><h3>SI NO</h3></td>
+            <td><h3>Product</h3></td>
+            <td><h3>Action</h3></td>
+        </tr>
+        {% for i in PR %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{i.product_name}}</td>
+            <td><a href="{% url 'webadmin:Del_Pro' i.id %}">Delete</a></td>
+            <td><a href="{% url 'webadmin:Stock' i.id %}">Stock</a></td>
+        </tr>
+        {% endfor %}
+        </table>
+    </form>
+</div>
+</body>
+</html>
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock content %}

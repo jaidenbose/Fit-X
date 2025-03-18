@@ -1,0 +1,46 @@
+{% extends 'YogaTrainer/Head.html' %}
+{% load static %}
+{% block content %}
+<html>
+<head>
+    <title>Edit Profile</title>
+</head>
+<body>
+    <br><br><br><br><br><br><br><br><br><br><br><br>
+    <center><h2><b>EDIT PROFILE</b></h2></center>
+    <br><br>
+    <div id="tab" align="center">
+    <form action="" method="post">
+        {% csrf_token %}
+        <table border="11" align="center">
+            <tr>
+                <td><h1>Name</h1></td>
+                <td><input type="text" name="txt_name" id="" value="{{YOG.yoga_name}}"></td>
+            </tr>
+            <tr>
+                <td><h1>Contact</h1></td>
+                <td><input type="text" name="txt_contact" id="" value="{{YOG.yoga_contact}}"></td>
+            </tr>
+            <tr>
+                <td><h1>Email</h1></td>
+                <td><input type="text" name="txt_email" id="" value="{{YOG.yoga_email}}"></td>
+            </tr>
+            <tr>
+                <td><h1>Address</h1></td>
+                <td><textarea name="txt_address" cols="20" rows="6">{{YOG.yoga_address}}</textarea></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><h2>
+                    <input type="submit" name="btn_submit" value="Update">
+                    <input type="reset" name="btn_cancel" value="Cancel"></h2>
+                </td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>
+
+
+<br><br><br><br><br><br>
+{% endblock content %}

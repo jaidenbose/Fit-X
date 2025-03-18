@@ -1,0 +1,98 @@
+
+{% extends 'Admin/Head.html' %}
+{% load static %}<html>
+    <title>View Feedbacks</title>
+    <body>
+        {% block content %}
+    <br><br>
+            <form method="post" enctype="multipart/form-data">
+             {% csrf_token %}
+             <div id="tab">
+                <h1 align="center">User Feedbacks</h1><br>
+            <table border="1" align="center" cellpadding="10" style="border-collapse:collapse">
+                <tr>
+                    <th>Sl.No</th>
+                    <th>Name</th>
+           
+                    <th>Content</th>
+                   
+
+                </tr>
+                {%for i in user %}
+                <tr>
+                    <td>{{i.id}}</td>
+                    <td>{{i.user.user_name}}
+                  
+                    <td>{{i.description}}</td>
+                </tr>
+                {%endfor%}
+            </table>
+            
+            <br><br>
+            <h1 align="center">FitnessTrainer Feedbacks</h1><br>
+            <table border="1" align="center" cellpadding="10" style="border-collapse:collapse">
+                <tr>
+                    <th>Sl.No</th>
+                    <th>Name</th>
+           
+                    <th>Content</th>
+                   
+
+                </tr>
+                {%for i in fitness %}
+                <tr>
+                    <td>{{i.id}}</td>
+                    <td>{{i.fitnesstrainer_id.fitness_name}}
+                  
+                    <td>{{i.description}}</td>
+                </tr>
+                {%endfor%}
+            </table>
+
+            <br><br>
+            <h1 align="center">YogaTrainer Feedbacks</h1><br>
+            <table border="1" align="center" cellpadding="10" style="border-collapse:collapse">
+                <tr>
+                    <th>Sl.No</th>
+                    <th>Name</th>
+           
+                    <th>Content</th>
+                   
+
+                </tr>
+                {%for i in yoga %}
+                <tr>
+                    <td>{{i.id}}</td>
+                    <td>{{i.yogatrainer_id.yoga_name}}
+                  
+                    <td>{{i.description}}</td>
+                </tr>
+                {%endfor%}
+            </table>
+
+            <br><br>
+            <h1 align="center">ZumbaTrainer Feedbacks</h1><br>
+            <table border="1" align="center" cellpadding="10" style="border-collapse:collapse">
+                <tr>
+                    <th>Sl.No</th>
+                    <th>Name</th>
+           
+                    <th>Content</th>
+                   
+
+                </tr>
+                {%for i in zumba %}
+                <tr>
+                    <td>{{i.id}}</td>
+                    <td>{{i.zumbatrainer_id.zumba_name}}
+                  
+                    <td>{{i.description}}</td>
+                </tr>
+                {%endfor%}
+            </table>
+        </div>
+</form>
+<br><br><br><br><br><br>
+{% endblock content %}
+</body>
+</html>

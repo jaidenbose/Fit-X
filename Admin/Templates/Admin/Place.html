@@ -1,0 +1,64 @@
+{% extends 'Admin/Head.html' %}
+{% load static %}
+{% block content %}
+<html>
+<head>
+    <title>Place</title>
+</head>
+<body>
+    <br><br><br><br>
+    <center><h2><b>PLACE</b></h2></center>
+    
+    <div id="tab" align="center">
+    <form action="" method="post">
+        {% csrf_token %}
+        <br><br><br>
+        <table border="11" align="center">
+            <tr>
+                <td><h1>District</h1></td>
+                <td><select name="sel_district" id="">
+                    <option value="">-----Select-----</option>
+                {% for i in DS %}
+                    <option value="{{i.id}}">{{i.district_name}}</option>
+                {% endfor %}
+                </select></td>
+            </tr>
+            <tr>
+                <td><h1>Place</h1></td>
+                <td><input type="text" name="txt_place" id=""></td>
+            </tr>
+                <td><h1>Pincode</h1></td>
+                <td><input type="number" name="txt_pincde" id=""></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><h2>
+                    <input type="submit" name="txt_save" value="Save">
+                    <input type="reset" name="txt_cancel" value="Cancel"></h2>
+                </td>
+            </tr>
+        </table>
+        <br><br>
+        <table border="10" align="center">
+            <tr>
+                <td><h2>SI NO</h2></td>
+                <td><h2>District</h2></td>
+                <td><h2>Place</h2></td>
+                <td><h2>Action</h2></td>
+            </tr>
+            {% for i in PL %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{i.district}}</td>
+                <td>{{i.place_name}}</td>
+                <td><a href="{% url 'webadmin:Del_Plc' i.id %}">Delete</a></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </form>
+</div>
+</body>
+</html>
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock content %}
